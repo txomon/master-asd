@@ -4,3 +4,5 @@ _info
 *.bak
 *.wlf
 work
+transcript
+*.mti
