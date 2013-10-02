@@ -1,3 +1,6 @@
 *_lock
 *.mpf
 _info
+*.bak
+*.wlf
+work
