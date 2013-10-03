@@ -12,12 +12,12 @@ BEGIN
   PROCESS
   BEGIN
     clk <= '1';
-    WAIT FOR 2ns;
+    WAIT FOR 2 ns;
     WHILE TRUE LOOP
       clk <= '0';
-      WAIT FOR 5ns;
+      WAIT FOR 5 ns;
       clk <= '1';
-      WAIT FOR 5ns;
+      WAIT FOR 5 ns;
     END LOOP;
   END PROCESS;
 END dataflow;
