@@ -1,4 +1,4 @@
-LIBRARY ieee, work;
+LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.std_logic_arith.all;
 
@@ -9,14 +9,14 @@ ENTITY dgen IS
     CONSTANT tclk :IN TIME := 100 ns;
     CONSTANT npause :IN INTEGER := 10
   );
-  
-  PORT   (
+
+  PORT (
     SIGNAL rst :OUT STD_LOGIC;
     SIGNAL clk :OUT STD_LOGIC;
     SIGNAL stb :OUT STD_LOGIC;
     SIGNAL dat :OUT STD_LOGIC_VECTOR(7 downto 0)
   );
-  
+
 END dgen;
 
 ARCHITECTURE dataflow OF dgen IS
@@ -35,7 +35,7 @@ ARCHITECTURE dataflow OF dgen IS
   SIGNAL cont :INTEGER RANGE 0 TO npause;
   SIGNAL lect :STD_LOGIC_VECTOR(7 downto 0);
 
-BEGIN  
+BEGIN
   -- Reset signal
   PROCESS
   BEGIN
@@ -46,7 +46,7 @@ BEGIN
   END PROCESS;
 
   rst <= in_rst;
-  
+
   -- Clock signal
   CLOCK : clktyp
     GENERIC MAP (
@@ -55,7 +55,7 @@ BEGIN
     PORT MAP (
       in_clk
     );
- 
+
   clk <= in_clk;
 
   -- Counter
@@ -73,7 +73,7 @@ BEGIN
   		END IF;
   	END IF;
   END PROCESS;
-  
+
   stb_a <= '1' WHEN cont = npause ELSE '0';
 
   -- File read
@@ -84,7 +84,7 @@ BEGIN
   BEGIN
  	  IF RISING_EDGE(in_rst) THEN
  	    FILE_CLOSE(fich);
- 	    FILE_OPEN(fich, "fichlectura.txt");
+ 	    FILE_OPEN(fich, "fichlectura.txt", READ_MODE);
 	  ELSE
 	    IF (in_rst = '0' and RISING_EDGE(stb_b)) THEN
 	      READ(fich, char);
@@ -92,10 +92,10 @@ BEGIN
       END IF;
     END IF;
   END PROCESS;
-  
+
   -- Read trigger
   stb_b <= stb_a AFTER tp WHEN in_rst = '0' ELSE '0';
   stb <= stb_b;
   dat <= lect WHEN stb_b = '1' ELSE (OTHERS => 'Z');
-  
+
 END dataflow;
