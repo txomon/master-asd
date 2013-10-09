@@ -77,7 +77,7 @@ BEGIN
   stb_a <= '1' WHEN cont = npause ELSE '0';
 
   -- File read
-  PROCESS (stb_b, in_rst)
+  PROCESS (stb_a, in_rst)
     TYPE BinFile IS FILE OF CHARACTER;
     FILE fich : BinFile OPEN READ_MODE IS "fichlectura.txt";
     VARIABLE char: CHARACTER; -- reading var
@@ -86,7 +86,7 @@ BEGIN
  	    FILE_CLOSE(fich);
  	    FILE_OPEN(fich, "fichlectura.txt", READ_MODE);
 	  ELSE
-	    IF (in_rst = '0' and RISING_EDGE(stb_b)) THEN
+	    IF (in_rst = '0' and RISING_EDGE(stb_a)) THEN
 	      READ(fich, char);
 	      lect <= CONV_STD_LOGIC_VECTOR(CHARACTER'POS(char),8);
       END IF;

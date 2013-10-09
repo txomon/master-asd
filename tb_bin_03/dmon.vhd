@@ -12,24 +12,25 @@ ENTITY dmon IS
 END dmon;
 
 ARCHITECTURE dataflow OF dmon IS
-
+  TYPE BinFile IS FILE OF CHARACTER;
+  FILE fich : BinFile;    
 BEGIN
-  PROCESS(stb, rst)
-    TYPE BinFile IS FILE OF CHARACTER;
-    FILE fich : BinFile;
+
+  PROCESS(stb)
     VARIABLE char: CHARACTER; -- reading var
   BEGIN
-    IF FALLING_EDGE(rst) THEN
-      FILE_OPEN(fich, "fichescritura.txt", WRITE_MODE);
-    ELSIF rst = '0' THEN
-      FILE_OPEN(fich, "fichescritura.txt", APPEND_MODE);
-    END IF;
-
     IF (rst = '0' and RISING_EDGE(stb)) THEN
       char := CHARACTER'VAL(conv_integer(dat));
       WRITE(fich, char);
-      FILE_CLOSE(fich);
     END IF;
   END PROCESS;
 
+  PROCESS(rst,stb)
+  BEGIN
+    IF FALLING_EDGE(rst) THEN
+      FILE_OPEN(fich, "fichescritura.txt", WRITE_MODE);
+    ELSIF RISING_EDGE(rst) THEN
+      FILE_CLOSE(fich);
+    END IF;
+  END PROCESS;
 END dataflow;
