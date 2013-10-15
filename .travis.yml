@@ -1,7 +1,7 @@
 install:
   - "sudo add-apt-repository -y ppa:megous/ppa"
   - "sudo apt-get update"
-  - "sudo apt-get install megatools"
+  - "sudo apt-get install glib-networking megatools"
   - "megadl 'https://mega.co.nz/#!YZJkUaya!AkNprC8_vARyOFy8tGtjumBMjZwq5H11WkS3k6FrcQc'"
   - "ModelSimSetup-13.0.1.232.run --mode unattended --installdir /home/travis/altera"
   - "ls"
