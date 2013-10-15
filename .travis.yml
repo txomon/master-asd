@@ -1,8 +1,10 @@
 install:
   - "wget 'http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-13.0.1.232-linux.tar'"
   - "tar xf Quartus-13.0.1.232-linux.tar"
-  - "components/ModelSimSetup-13.0.1.232.run --mode unattended --installdir $PWD/altera"
-  - "altera/modelsim_ase/bin/vsim -help"
+  - "components/ModelSimSetup-13.0.1.232.run --mode unattended --installdir /home/travis/altera"
+  - "ls"
+  - "ls .."
+  - "/home/travis/altera/modelsim_ase/bin/vsim -f run-tests.tcl"
 
 script:
   - "echo Success!"
