@@ -27,7 +27,7 @@ BEGIN
       END IF;
 
       FOR I IN 0 TO 1 LOOP
-        val := UNSIGNED(dat((I*4 + 3) DOWNTO ((I*4))));
+        val := UNSIGNED(dat((7-I*4) DOWNTO ((4-I*4))));
         IF val < 10 THEN
           char := CHARACTER'VAL(CONV_INTEGER(val) + 48);
         ELSIF val > 9 THEN
@@ -35,7 +35,7 @@ BEGIN
         END IF;
         WRITE(fich, char);
       END LOOP;
-
+      sta_in <= '0';
     ELSIF (rst = '1' AND RISING_EDGE(clk)) THEN
       sta_in <= '1';
     END IF;
