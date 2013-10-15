@@ -29,9 +29,9 @@ BEGIN
       FOR I IN 0 TO 1 LOOP
         val := UNSIGNED(dat((I*4 + 3) DOWNTO ((I*4))));
         IF val < 10 THEN
-          char := CHARACTER'VAL(val + 48);
+          char := CHARACTER'VAL(CONV_INTEGER(val) + 48);
         ELSIF val > 9 THEN
-          char := CHARACTER'VAL(val + 55);
+          char := CHARACTER'VAL(CONV_INTEGER(val) + 55);
         END IF;
         WRITE(fich, char);
       END LOOP;
