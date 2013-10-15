@@ -1,7 +1,9 @@
 install:
-  - "wget 'http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-13.0.1.232-linux.tar'"
-  - "tar xf Quartus-13.0.1.232-linux.tar"
-  - "components/ModelSimSetup-13.0.1.232.run --mode unattended --installdir /home/travis/altera"
+  - "sudo add-apt-repository ppa:megous/ppa"
+  - "sudo apt-get update"
+  - "sudo apt-get install megatools"
+  - "megaget --no-ask-password 'https://mega.co.nz/#!YZJkUaya!AkNprC8_vARyOFy8tGtjumBMjZwq5H11WkS3k6FrcQc'"
+  - "ModelSimSetup-13.0.1.232.run --mode unattended --installdir /home/travis/altera"
   - "ls"
   - "ls .."
   - "/home/travis/altera/modelsim_ase/bin/vsim -f run-tests.tcl"

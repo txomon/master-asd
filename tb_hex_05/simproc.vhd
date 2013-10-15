@@ -39,7 +39,7 @@ BEGIN
     PORT MAP (
       clk => clk_in
     );
-  rst <= rst_in;
+  clk <= clk_in;
     
   -- Reset
   PROCESS
