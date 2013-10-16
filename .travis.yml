@@ -3,7 +3,7 @@ install:
   - "sudo apt-get update"
   - "sudo apt-get install glib-networking megatools"
   - "mkdir ~/downloads"
-  - "megadl --no-progress 'https://mega.co.nz/#!YZJkUaya!AkNprC8_vARyOFy8tGtjumBMjZwq5H11WkS3k6FrcQc'"
+  - "megadl --no-progress 'https://mega.co.nz/#!YZJkUaya!AkNprC8_vARyOFy8tGtjumBMjZwq5H11WkS3k6FrcQc' & while [[ `jobs | wc -l` != 0 ]]; do sleep 30; echo 'Do not stop me!'; done"
   - "chmod +x ~/downloads/*"
   - "~/downloads/ModelSimSetup-13.0.1.232.run --mode unattended --installdir ~/altera"
   - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH'
