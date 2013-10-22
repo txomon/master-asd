@@ -38,12 +38,12 @@ ARCHITECTURE structural OF tb_alu IS
     );
   END COMPONENT;
   SIGNAL in_dat : STD_LOGIC_VECTOR(7 DOWNTO 0);
-  SIGNAL in_a, in_b, in_cnt : STD_LOGIC_VECTOR(3 DOWNTO 0);
+  SIGNAL in_cnt : STD_LOGIC_VECTOR(3 DOWNTO 0);
 BEGIN
   ALU : alup
     PORT MAP (
-      a => in_a,
-      b => in_b,
+      a => in_dat(7 DOWNTO 4),
+      b => in_dat(3 DOWNTO 0),
       fun => in_cnt
     );
 
@@ -52,6 +52,5 @@ BEGIN
       cnt => in_cnt,
       data => in_dat
     );
-  in_dat <= in_a & in_b;
   
 END structural;

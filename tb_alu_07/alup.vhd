@@ -41,8 +41,8 @@ BEGIN
             a(0) & a(0) & a(nb-1 DOWNTO 1) WHEN "1011",
             (OTHERS => '1') WHEN OTHERS;          
   
-  WITH fun SELECT
-    c <=  cdat(nb) WHEN "0000" | "0001" | "0010" | "0011" | "0100",
-          '0' WHEN OTHERS;
-    
+  c <= cdat(nb);
+  e <= '0' WHEN fun = "0111" ELSE '1';
+  z <= '1' WHEN cdat = "00000" ELSE '0';
+  dat <= cdat(nb-1 DOWNTO 0);
 END behavioral;

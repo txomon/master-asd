@@ -119,6 +119,6 @@ BEGIN
     END IF;
   END PROCESS;
   
-  cnt <= std_logic_vector(counter);
+  cnt <= std_logic_vector(counter) AFTER tclk*2;
   
 END dataflow;
