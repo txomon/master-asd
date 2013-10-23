@@ -112,10 +112,12 @@ BEGIN
   
   PROCESS(in_clk)
   BEGIN
- 	  IF (FALLING_EDGE(in_clk) and in_out1 = '1') THEN
- 	    counter <= counter + 1;
-    ELSIF in_out1 = '0' THEN
-      counter <= (OTHERS => '0');
+ 	  IF FALLING_EDGE(in_clk) THEN
+ 	    IF in_out1 = '1' THEN
+ 	      counter <= counter + 1;
+      ELSIF in_out1 = '0' THEN
+        counter <= (OTHERS => '0');
+      END IF;
     END IF;
   END PROCESS;
   
