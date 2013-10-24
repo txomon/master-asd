@@ -21,29 +21,20 @@ ENTITY simdat IS
 END ENTITY;
 
 ARCHITECTURE dataflow OF simdat IS
-  COMPONENT clktyp IS
-    GENERIC (
-      tclk : IN TIME
-    );
-    PORT (
-      clk :OUT STD_LOGIC
-    );
-  END COMPONENT;
-  
   SIGNAL in_clk: STD_LOGIC;
   SIGNAL counter : UNSIGNED (3 DOWNTO 0);
   SIGNAL in_out1, in_out2 : STD_LOGIC;
 BEGIN
   -- Clock component
-  CLOCK : clktyp
-    GENERIC MAP (
-      tclk => tclk
-    )
-    PORT MAP (
-      clk => in_clk
-    );
-
-  clk <= in_clk;
+  PROCESS
+  BEGIN
+    WHILE TRUE LOOP
+      clk <= '0';
+      WAIT FOR tclk;
+      clk <= '1';
+      WAIT FOR tclk;
+    END LOOP;
+  END PROCESS;
   
   -- out1 and out2 generation
   PROCESS
