@@ -1,8 +1,9 @@
 install:
   - "mkdir ~/downloads"
-  - "wget -O ~/downloads/ModelSimSetup-13.0.1.232.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run"
-  - "chmod +x ~/downloads/*"
-  - "~/downloads/ModelSimSetup-13.0.1.232.run --mode unattended --installdir ~/altera"
+  - "wget -O ~/downloads/modelsim.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run"
+  - "chmod +x ~/downloads/modelsim.run"
+  - "find ~"
+  - "~/downloads/modelsim.run --mode unattended --installdir ~/altera"
   - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH'
   - "ls"
   - "vsim -f run-tests.tcl"
