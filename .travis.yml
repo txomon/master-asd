@@ -1,8 +1,9 @@
 install:
   - "mkdir ~/downloads"
-  - "wget -O ~/downloads/modelsim.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run"
+  - "wget -O ~/downloads/modelsim.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run & sudo apt-get install tk tcl"
   - "chmod +x ~/downloads/modelsim.run"
-  - "ls ~ ~/downloads"
+  - "ls -R ~"
+  - "env"
   - "~/downloads/modelsim.run --mode unattended --installdir ~/altera"
   - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH'
   - "ls"
