@@ -1,6 +1,6 @@
 install:
   - "sudo apt-get install aptitude"
-  - "sudo aptitude -y install ia32-libs"
+  - "sudo aptitude update && sudo aptitude -y install ia32-libs"
   - "mkdir ~/downloads"
   - "wget -O ~/downloads/modelsim.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run"
   - "chmod +x ~/downloads/modelsim.run"
