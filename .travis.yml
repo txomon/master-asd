@@ -5,8 +5,8 @@ install:
   - "wget -O ~/downloads/modelsim.run https://dl.dropboxusercontent.com/u/6090385/ModelSimSetup-13.0.1.232.run"
   - "chmod +x ~/downloads/modelsim.run"
   - "~/downloads/modelsim.run --mode unattended --installdir ~/altera"
-  - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH'
-  - "vsim --help"
+  - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH"'
+  - "vsim -help"
 
 script:
   - "echo Success!"
