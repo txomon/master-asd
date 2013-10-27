@@ -6,7 +6,6 @@ install:
   - "chmod +x ~/downloads/modelsim.run"
   - "~/downloads/modelsim.run --mode unattended --installdir ~/altera"
   - 'export PATH="$HOME/altera/modelsim_ase/bin:$PATH"'
-  - "vsim -help"
 
 script:
-  - "echo Success!"
+  - "utils/make-tests.sh"
