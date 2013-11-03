@@ -27,7 +27,7 @@ ARCHITECTURE structural OF tb_regsp IS
     );
   END COMPONENT;
   
-  COMPONENT regrespar IS
+  COMPONENT regserpar IS
     GENERIC (
       CONSTANT n_b :IN INTEGER := 8
     );
@@ -50,7 +50,7 @@ BEGIN
       out1 => in_d,
       out2 => in_en
       );
-  REG : regrespar
+  REG : regserpar
     PORT MAP(
       clk => in_clk,
       d => in_d,
