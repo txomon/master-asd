@@ -12,19 +12,19 @@ ENTITY rstclk IS
     CONSTANT ti2 :IN TIME := 3015 ns;
     CONSTANT tf2 :IN TIME := 3415 ns
   );
-  
+
   PORT   (
     SIGNAL rst :OUT STD_LOGIC;
     SIGNAL clk :OUT STD_LOGIC;
     SIGNAL out1 :OUT STD_LOGIC;
     SIGNAL out2 :OUT STD_LOGIC
   );
-  
+
 END rstclk;
 
 ARCHITECTURE dataflow OF rstclk IS
 BEGIN
-  
+
   -- Reset signal
   PROCESS
   BEGIN
@@ -32,7 +32,7 @@ BEGIN
     WAIT FOR trst;
     rst <= '0';
   END PROCESS;
-  
+
   -- Clock signal
   PROCESS
   BEGIN
@@ -45,7 +45,7 @@ BEGIN
       WAIT FOR (tclk / 2);
     END LOOP;
   END PROCESS;
-  
+
   -- Signal 1
   PROCESS
   BEGIN
@@ -56,7 +56,7 @@ BEGIN
     out1 <= '0';
     WAIT;
   END PROCESS;
-  
+
   -- Signal 2
   PROCESS
   BEGIN
@@ -67,5 +67,5 @@ BEGIN
     out2 <= '0';
     WAIT;
   END PROCESS;
-  
+
 END dataflow;

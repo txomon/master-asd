@@ -19,7 +19,7 @@ ARCHITECTURE structural OF tb_alu IS
       SIGNAL e :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   COMPONENT simdat IS
     GENERIC (
       CONSTANT tclk :IN TIME := 100 ns;
@@ -28,7 +28,7 @@ ARCHITECTURE structural OF tb_alu IS
       CONSTANT ti2 :IN TIME := 310 ns;
       CONSTANT tf2 :IN TIME := 1900 ns
     );
-  
+
     PORT (
       SIGNAL clk :OUT STD_LOGIC;
       SIGNAL cnt :OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -52,5 +52,5 @@ BEGIN
       cnt => in_cnt,
       data => in_dat
     );
-  
+
 END structural;

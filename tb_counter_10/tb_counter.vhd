@@ -6,7 +6,7 @@ ENTITY tb_counter IS
     SIGNAL dat :OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END tb_counter;
-  
+
 ARCHITECTURE structural OF tb_counter IS
   COMPONENT counter IS
     GENERIC (
@@ -18,7 +18,7 @@ ARCHITECTURE structural OF tb_counter IS
       SIGNAL dat :OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT;
-  
+
   COMPONENT rstclk IS
     GENERIC (
       CONSTANT trst :IN TIME := 320 ns;
@@ -37,7 +37,7 @@ ARCHITECTURE structural OF tb_counter IS
       SIGNAL out2 :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   SIGNAL in_rst : STD_LOGIC;
   SIGNAL in_clk : STD_LOGIC;
 

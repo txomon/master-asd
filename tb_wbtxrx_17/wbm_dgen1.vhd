@@ -7,7 +7,7 @@ ENTITY wbm_dgen1 IS
     CONSTANT tp :IN TIME := 10 ns;
     CONSTANT trst :IN TIME := 320 ns;
     CONSTANT tclk :IN TIME := 100 ns;
-    CONSTANT npause :IN INTEGER := 10
+    CONSTANT npause :IN INTEGER := 100
   );
 
   PORT (
@@ -19,16 +19,6 @@ ENTITY wbm_dgen1 IS
 END wbm_dgen1;
 
 ARCHITECTURE dataflow OF wbm_dgen1 IS
-
-  COMPONENT clktyp
-    GENERIC (
-      tclk : IN TIME
-    );
-    PORT (
-      clk : OUT STD_LOGIC
-    );
-  END COMPONENT;
-
   SIGNAL in_clk, in_rst_o :STD_LOGIC;
   SIGNAL stb_a, stb_b :STD_LOGIC;
   SIGNAL cont :INTEGER RANGE 0 TO npause;
@@ -46,15 +36,15 @@ BEGIN
 
   rst_o <= in_rst_o;
 
-  -- Clock signal
-  CLOCK : clktyp
-    GENERIC MAP (
-      tclk => tclk
-    )
-    PORT MAP (
-      in_clk
-    );
-
+  PROCESS
+  BEGIN
+    WHILE TRUE LOOP
+      in_clk <= '0';
+      WAIT FOR tclk;
+      in_clk <= '1';
+      WAIT FOR tclk;
+    END LOOP;
+  END PROCESS;
   clk_o <= in_clk;
 
   -- Counter

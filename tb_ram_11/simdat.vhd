@@ -10,7 +10,7 @@ ENTITY simdat IS
     CONSTANT ti2 :IN TIME := 310 ns;
     CONSTANT tf2 :IN TIME := 1900 ns
   );
-  
+
   PORT (
     SIGNAL clk :OUT STD_LOGIC;
     SIGNAL cnt :OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -35,7 +35,7 @@ BEGIN
       WAIT FOR tclk;
     END LOOP;
   END PROCESS;
-  
+
   -- out1 and out2 generation
   PROCESS
   BEGIN
@@ -46,7 +46,7 @@ BEGIN
     in_out1 <= '0';
     WAIT;
   END PROCESS;
-  
+
   PROCESS
   BEGIN
     in_out2 <= '0';
@@ -56,10 +56,10 @@ BEGIN
     in_out2 <= '0';
     WAIT;
   END PROCESS;
-  
+
   out1 <= in_out1;
-  out2 <= in_out2;  
-  
+  out2 <= in_out2;
+
   -- File read
   PROCESS (in_clk)
     TYPE BinFile IS FILE OF CHARACTER;
@@ -93,14 +93,14 @@ BEGIN
           WHEN 'd' => data_pack := data_pack(3 DOWNTO 0) & "1101";
           WHEN 'e' => data_pack := data_pack(3 DOWNTO 0) & "1110";
           WHEN 'f' => data_pack := data_pack(3 DOWNTO 0) & "1111";
-          WHEN OTHERS => 
+          WHEN OTHERS =>
         END CASE;
       END LOOP;
 
       data <= data_pack;
     END IF;
   END PROCESS;
-  
+
   PROCESS(in_clk)
   BEGIN
  	  IF FALLING_EDGE(in_clk) THEN
@@ -111,7 +111,7 @@ BEGIN
       END IF;
     END IF;
   END PROCESS;
-  
+
   cnt <= std_logic_vector(counter);
-  
+
 END dataflow;

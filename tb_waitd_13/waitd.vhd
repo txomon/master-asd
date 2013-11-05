@@ -5,7 +5,7 @@ ENTITY waitd IS
   GENERIC (
     CONSTANT ntb :IN INTEGER := 10
   );
-  
+
   PORT (
     SIGNAL clk :IN STD_LOGIC;
     SIGNAL ini :IN STD_LOGIC;

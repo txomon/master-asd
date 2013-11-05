@@ -26,12 +26,12 @@ ARCHITECTURE structural OF tb_regsp IS
       SIGNAL out2 :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   COMPONENT regserpar IS
     GENERIC (
       CONSTANT n_b :IN INTEGER := 8
     );
-    
+
     PORT (
       SIGNAL clk :IN STD_LOGIC;
       SIGNAL d :IN STD_LOGIC;

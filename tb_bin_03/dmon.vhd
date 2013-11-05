@@ -13,7 +13,7 @@ END dmon;
 
 ARCHITECTURE dataflow OF dmon IS
   TYPE BinFile IS FILE OF CHARACTER;
-  FILE fich : BinFile;    
+  FILE fich : BinFile;
 BEGIN
 
   PROCESS(stb)

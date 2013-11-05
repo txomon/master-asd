@@ -28,7 +28,7 @@ ARCHITECTURE dataflow OF tb_stream IS
   FILE fich : BinFile OPEN READ_MODE IS "fichlectura.txt";
 BEGIN
     -- Clock
-  CLOCK : clktyp 
+  CLOCK : clktyp
     GENERIC MAP (
       tclk => tclk
     )
@@ -45,11 +45,11 @@ BEGIN
     rst_in <= '0';
     WAIT;
   END PROCESS;
-  
+
   rst <= rst_in;
 
   -- File reading now
-  
+
   -- File read
   PROCESS(clk_in)
     VARIABLE cont : BOOLEAN;
@@ -69,5 +69,5 @@ BEGIN
       END LOOP;
     END IF;
   END PROCESS;
-    
+
 END dataflow;

@@ -16,7 +16,7 @@ ARCHITECTURE structural OF tb_rom IS
       SIGNAL dat_o :OUT STD_LOGIC_VECTOR(13 DOWNTO 0)
     );
   END COMPONENT;
-  
+
   COMPONENT simdat IS
     GENERIC (
       CONSTANT tclk :IN TIME := 100 ns;
@@ -25,7 +25,7 @@ ARCHITECTURE structural OF tb_rom IS
       CONSTANT ti2 :IN TIME := 310 ns;
       CONSTANT tf2 :IN TIME := 1900 ns
     );
-  
+
     PORT (
       SIGNAL clk :OUT STD_LOGIC;
       SIGNAL cnt :OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -34,7 +34,7 @@ ARCHITECTURE structural OF tb_rom IS
       SIGNAL out2 :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   SIGNAL in_clk : STD_LOGIC;
   SIGNAL in_adr : STD_LOGIC_VECTOR(3 DOWNTO 0);
   SIGNAL in_stb : STD_LOGIC;

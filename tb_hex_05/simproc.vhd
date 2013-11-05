@@ -30,9 +30,9 @@ ARCHITECTURE dataflow OF simproc IS
   TYPE BinFile IS FILE OF CHARACTER;
   FILE fich : BinFile OPEN READ_MODE IS "fichlectura.txt";
 BEGIN
-  
+
   -- Clock
-  CLOCK : clktyp 
+  CLOCK : clktyp
     GENERIC MAP (
       tclk => tclk
     )
@@ -40,7 +40,7 @@ BEGIN
       clk => clk_in
     );
   clk <= clk_in;
-    
+
   -- Reset
   PROCESS
   BEGIN
@@ -49,9 +49,9 @@ BEGIN
     rst_in <= '0';
     WAIT;
   END PROCESS;
-  
+
   rst <= rst_in;
-  
+
   -- File read
   PROCESS(clk_in)
     VARIABLE cont : INTEGER RANGE 0 TO 2;
@@ -92,7 +92,7 @@ BEGIN
           WHEN 'd' => data_pack := data_pack(3 DOWNTO 0) & "1101";
           WHEN 'e' => data_pack := data_pack(3 DOWNTO 0) & "1110";
           WHEN 'f' => data_pack := data_pack(3 DOWNTO 0) & "1111";
-          WHEN OTHERS => 
+          WHEN OTHERS =>
             cont := cont + 1;
             sta <= '1';
         END CASE;

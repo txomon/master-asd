@@ -24,7 +24,7 @@ BEGIN
   BEGIN
     IF RISING_EDGE(clk_i) THEN
       IF rst_i = '0' THEN
-        IF ack_i='1' THEN
+        IF rdy_i='1' THEN
           char := CHARACTER'VAL(conv_integer(dat_i));
           WRITE(fich, char);
         END IF;

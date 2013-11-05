@@ -26,7 +26,7 @@ ARCHITECTURE structural OF tb_regsp IS
       SIGNAL out2 :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   COMPONENT regparser IS
     GENERIC (
       CONSTANT n_b :IN INTEGER := 8

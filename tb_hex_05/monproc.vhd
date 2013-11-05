@@ -16,7 +16,7 @@ ARCHITECTURE dataflow OF monproc IS
   FILE fich : BinFile OPEN WRITE_MODE IS "fichescritura.txt";
   SIGNAL sta_in : STD_LOGIC;
 BEGIN
-  
+
   PROCESS(clk)
     VARIABLE char : CHARACTER; -- writting var
     VARIABLE val : UNSIGNED (3 DOWNTO 0);

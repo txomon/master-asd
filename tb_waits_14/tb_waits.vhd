@@ -14,7 +14,7 @@ ARCHITECTURE structural OF tb_waits IS
     GENERIC (
       CONSTANT ntb :IN INTEGER := 10
     );
-  
+
     PORT (
       SIGNAL clk :IN STD_LOGIC;
       SIGNAL ini :IN STD_LOGIC;
@@ -22,7 +22,7 @@ ARCHITECTURE structural OF tb_waits IS
       SIGNAL tc :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   COMPONENT rstclk IS
     GENERIC (
       CONSTANT trst :IN TIME := 320 ns;
@@ -33,7 +33,7 @@ ARCHITECTURE structural OF tb_waits IS
       CONSTANT ti2 :IN TIME := 3015 ns;
       CONSTANT tf2 :IN TIME := 3415 ns
     );
-  
+
     PORT   (
       SIGNAL rst :OUT STD_LOGIC;
       SIGNAL clk :OUT STD_LOGIC;
@@ -41,12 +41,12 @@ ARCHITECTURE structural OF tb_waits IS
       SIGNAL out2 :OUT STD_LOGIC
     );
   END COMPONENT;
-  
+
   SIGNAL in_clk : STD_LOGIC;
   SIGNAL in_ini : STD_LOGIC;
   SIGNAL in_stp : STD_LOGIC;
 BEGIN
-  RST : rstclk 
+  RST : rstclk
     PORT MAP (
       clk => in_clk,
       out1 => in_ini,

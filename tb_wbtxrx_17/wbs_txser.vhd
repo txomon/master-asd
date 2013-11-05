@@ -142,7 +142,16 @@ BEGIN
     END PROCESS;
   m <= in_dat(0);
 
-  ack_o <= we_i AND stb_i;
+  process(we_i, stb_i, sta) begin
+    ack_o <= '0';
+    if sta=sto then
+      if we_i = '1' then
+        if stb_i = '1' then
+          ack_o <= '1';
+        end if;
+      end if;
+    end if;
+  end process;
   ld <= we_i AND stb_i;
 
 END behavioral;

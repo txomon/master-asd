@@ -1,3 +1,4 @@
+# BEGIN MODELSIM
 *_lock
 _info
 *.bak
@@ -6,6 +7,60 @@ work
 transcript
 *.mti
 *.zip
-fichescritura.txt
 *.swp
 *~
+# END MODELSIM
+# BEGIN ISE
+*.gise
+*.html
+*.cfg
+*.cmd
+*.xmsgs
+*.prj
+iseconfig
+*.log
+*.exe
+*.ini
+isim
+*.wdb
+*.map
+*.ncd
+*.xml
+*.xrpt
+*.bgn
+*.bit
+_ngo
+*.pad
+*.stx
+*.drc
+*.pcf
+*.ur
+*.mrp
+*.txt
+*.ngm
+*.bld
+*.cmd_log
+*.lso
+*.ngc
+*.ngd
+*.ngr
+*.par
+*.ptwx
+*.syr
+*.twr
+*.twx
+*.unroutes
+*.ut
+*.xpi
+*.xst
+*.xwbt
+*.csv
+xst
+xlnx*/
+*.bmm
+*.nlf
+*_synthesis.vhd
+*.jhd
+*.sch
+# END ISE
+!fichlectura.txt

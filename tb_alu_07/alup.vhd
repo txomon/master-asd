@@ -22,7 +22,7 @@ ARCHITECTURE behavioral OF alup IS
   SIGNAL in_a : SIGNED((nb) DOWNTO 0);
   SIGNAL in_b : SIGNED((nb) DOWNTO 0);
 BEGIN
-  
+
   in_a <= SIGNED(a(nb-1) & a);
   in_b <= SIGNED(b(nb-1) & b);
 
@@ -39,8 +39,8 @@ BEGIN
             in_a - 1 WHEN "1001",
             a(nb-1) & a(nb-2 DOWNTO 0) & a(nb-1) WHEN "1010",
             a(0) & a(0) & a(nb-1 DOWNTO 1) WHEN "1011",
-            (OTHERS => '1') WHEN OTHERS;          
-  
+            (OTHERS => '1') WHEN OTHERS;
+
   c <= cdat(nb);
   e <= '0' WHEN fun = "0111" ELSE '1';
   z <= '1' WHEN cdat = "00000" ELSE '0';

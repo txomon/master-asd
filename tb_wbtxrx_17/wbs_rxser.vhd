@@ -9,7 +9,7 @@ ENTITY wbs_rxser IS
     SIGNAL rst_i, clk_i :IN STD_LOGIC;
     SIGNAL stb_i, we_i :IN STD_LOGIC;
     SIGNAL rx :IN STD_LOGIC;
-    SIGNAL rdy_o :OUT STD_LOGIC;
+    SIGNAL rdy_o, ack_o :OUT STD_LOGIC;
     SIGNAL dat_o :OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END wbs_rxser;
@@ -134,10 +134,10 @@ BEGIN
       END CASE;
     END PROCESS;
 
-  PROCESS(clk, rst)
+  PROCESS(clk_i, rst_i)
     BEGIN
-      IF RISING_EDGE(clk) THEN
-        IF rst = '1' THEN
+      IF RISING_EDGE(clk_i) THEN
+        IF rst_i = '1' THEN
           sta <= SBY;
         ELSE
           sta <= stn;
@@ -151,6 +151,9 @@ BEGIN
   rdy_o <= tc WHEN STO,
            '0' WHEN OTHERS;
 
+  -- ACK out pin
+  ack_o <= we_i and stb_i;
+
   -- EN out pin
   WITH sta SELECT
   en <= tc WHEN B0 | B1 | B2 | B3 | B4 | B5 | B6 | B7,
@@ -162,8 +165,8 @@ BEGIN
          '0' WHEN OTHERS;
 
   -- Retarded
-  PROCESS(clk) BEGIN
-    IF RISING_EDGE(clk) THEN
+  PROCESS(clk_i) BEGIN
+    IF RISING_EDGE(clk_i) THEN
       IF ini='1' THEN
         cnt <= 0;
         tc <= '0';
@@ -179,14 +182,14 @@ BEGIN
     END IF;
   END PROCESS;
 
-  PROCESS(clk)
+  PROCESS(clk_i)
   BEGIN
-    IF RISING_EDGE(clk) THEN
+    IF RISING_EDGE(clk_i) THEN
       IF en = '1' THEN
         in_dat <= rx & in_dat(7 DOWNTO 1);
       END IF;
     END IF;
   END PROCESS;
-  dat <= in_dat;
+  dat_o <= in_dat;
 
 END behavioral;

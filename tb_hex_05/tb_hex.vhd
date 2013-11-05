@@ -32,14 +32,14 @@ ARCHITECTURE structural OF tb_hex IS
   SIGNAL sta : STD_LOGIC;
   SIGNAL dat : STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
-  SIM : simproc 
+  SIM : simproc
     PORT MAP (
       rst => rst,
       clk => clk,
       sta => sta,
       dat => dat
     );
-    
+
   MON : monproc
     PORT MAP (
       rst => rst,
