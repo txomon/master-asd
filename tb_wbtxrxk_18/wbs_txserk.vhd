@@ -158,6 +158,5 @@ begin
       when others =>
     end case;
   end process;
-  ld <= we_i and stb_i;
 
 end behavioral;

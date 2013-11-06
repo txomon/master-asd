@@ -67,7 +67,7 @@ begin
 
 --  stb_a <= '1' when cont = npause else '0';
 
-    stb_a <= rdy_i;
+    stb_a <= rdy_i when in_rst_o='0' else '0';
 
   -- file read
   process (stb_a, in_rst_o)
