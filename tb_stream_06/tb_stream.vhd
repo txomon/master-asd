@@ -58,10 +58,10 @@ BEGIN
   BEGIN
     IF (RISING_EDGE(clk_in) AND rst_in = '0') THEN
       cont := TRUE;
- 	    WHILE cont LOOP
- 	      cont := FALSE;
-	      READ(fich, char);
-	      CASE char IS
+       WHILE cont LOOP
+         cont := FALSE;
+        READ(fich, char);
+        CASE char IS
           WHEN '0' => stream <= '0';
           WHEN '1' => stream <= '1';
           WHEN OTHERS => cont := TRUE;

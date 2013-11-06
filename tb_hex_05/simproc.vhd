@@ -60,16 +60,16 @@ BEGIN
   BEGIN
     IF (RISING_EDGE(clk_in) AND rst_in = '0') THEN
       IF sta_in = '1' THEN
- 	      sta <= '1';
- 	      sta_in <= '0';
- 	    ELSE
- 	      sta <= '0';
- 	    END IF;
- 	    cont := 2;
- 	    WHILE (cont > 0) LOOP
- 	      cont := cont - 1;
-	      READ(fich, char);
-	      CASE char IS
+         sta <= '1';
+         sta_in <= '0';
+       ELSE
+         sta <= '0';
+       END IF;
+       cont := 2;
+       WHILE (cont > 0) LOOP
+         cont := cont - 1;
+        READ(fich, char);
+        CASE char IS
           WHEN '0' => data_pack := data_pack(3 DOWNTO 0) & "0000";
           WHEN '1' => data_pack := data_pack(3 DOWNTO 0) & "0001";
           WHEN '2' => data_pack := data_pack(3 DOWNTO 0) & "0010";

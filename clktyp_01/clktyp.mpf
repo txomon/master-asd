@@ -263,8 +263,8 @@ IterationLimit = 5000
 ; nomgc         Do not look for Mentor Graphics Licenses
 ; nomti         Do not look for Model Technology Licenses
 ; noqueue       Do not wait in the license queue when a license isn't available
-; viewsim	Try for viewer license but accept simulator license(s) instead
-;		of queuing for viewer license
+; viewsim  Try for viewer license but accept simulator license(s) instead
+;    of queuing for viewer license
 ; License = plus
 
 ; Stop the simulator after a VHDL/Verilog assertion message

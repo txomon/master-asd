@@ -67,10 +67,10 @@ BEGIN
     VARIABLE char: CHARACTER; -- reading var
     VARIABLE data_pack : STD_LOGIC_VECTOR(7 downto 0);
   BEGIN
- 	  IF (FALLING_EDGE(in_clk) and in_out1 = '1') THEN
- 	    FOR I IN 0 TO 2 LOOP
-	      READ(fich, char);
-	      CASE char IS
+     IF (FALLING_EDGE(in_clk) and in_out1 = '1') THEN
+       FOR I IN 0 TO 2 LOOP
+        READ(fich, char);
+        CASE char IS
           WHEN '0' => data_pack := data_pack(3 DOWNTO 0) & "0000";
           WHEN '1' => data_pack := data_pack(3 DOWNTO 0) & "0001";
           WHEN '2' => data_pack := data_pack(3 DOWNTO 0) & "0010";
@@ -103,9 +103,9 @@ BEGIN
 
   PROCESS(in_clk)
   BEGIN
- 	  IF FALLING_EDGE(in_clk) THEN
- 	    IF in_out1 = '1' THEN
- 	      counter <= counter + 1;
+     IF FALLING_EDGE(in_clk) THEN
+       IF in_out1 = '1' THEN
+         counter <= counter + 1;
       ELSIF in_out1 = '0' THEN
         counter <= (OTHERS => '0');
       END IF;

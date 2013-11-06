@@ -61,17 +61,17 @@ BEGIN
   -- Counter
   PROCESS (in_clk)
   BEGIN
-  	IF RISING_EDGE(in_clk) THEN
-  		IF (in_rst = '1') THEN
-  			cont <= 0;
- 		ELSE
-  		  IF (cont = npause) THEN
-		    cont <= 0;
-		  ELSE
-    			 cont <= cont + 1;
-  			END IF;
-  		END IF;
-  	END IF;
+    IF RISING_EDGE(in_clk) THEN
+      IF (in_rst = '1') THEN
+        cont <= 0;
+     ELSE
+        IF (cont = npause) THEN
+        cont <= 0;
+      ELSE
+           cont <= cont + 1;
+        END IF;
+      END IF;
+    END IF;
   END PROCESS;
 
   stb_a <= '1' WHEN cont = npause ELSE '0';
@@ -82,13 +82,13 @@ BEGIN
     FILE fich : BinFile OPEN READ_MODE IS "fichlectura.txt";
     VARIABLE char: CHARACTER; -- reading var
   BEGIN
- 	  IF RISING_EDGE(in_rst) THEN
- 	    FILE_CLOSE(fich);
- 	    FILE_OPEN(fich, "fichlectura.txt", READ_MODE);
-	  ELSE
-	    IF (in_rst = '0' and RISING_EDGE(stb_a)) THEN
-	      READ(fich, char);
-	      lect <= CONV_STD_LOGIC_VECTOR(CHARACTER'POS(char),8);
+     IF RISING_EDGE(in_rst) THEN
+       FILE_CLOSE(fich);
+       FILE_OPEN(fich, "fichlectura.txt", READ_MODE);
+    ELSE
+      IF (in_rst = '0' and RISING_EDGE(stb_a)) THEN
+        READ(fich, char);
+        lect <= CONV_STD_LOGIC_VECTOR(CHARACTER'POS(char),8);
       END IF;
     END IF;
   END PROCESS;
