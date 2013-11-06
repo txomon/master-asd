@@ -19,7 +19,7 @@ ARCHITECTURE dataflow OF wbm_dmon IS
   SIGNAL in_we_o, rdy_i_i : STD_LOGIC;
 BEGIN
 
-  rdy_i_i <= rdy_i when error_i = '0' else '1';
+  rdy_i_i <= rdy_i when error_i = '0' else '0';
 
   PROCESS(clk_i)
     VARIABLE char: CHARACTER; -- reading var
